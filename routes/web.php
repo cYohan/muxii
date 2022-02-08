@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\StatusesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('statuses', [StatusesController::class, 'index'])->name('statuses.index');
+Route::get('statuses/{status}', [StatusesController::class, 'show'])->name('statuses.show');
+Route::post('statuses', [StatusesController::class, 'store'])->name('statuses.store')->middleware('auth');
