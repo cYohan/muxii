@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFollowersTable extends Migration
+class CreateMediasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateFollowersTable extends Migration
      */
     public function up()
     {
-        Schema::create('followers', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedInteger('sender_id')->index();
-            $table->unsignedInteger('recipient_id')->index();
-
-            $table->enum('status', ['pending', 'accepted', 'denied'])->default('pending');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->morphs('mediable');
+            $table->text('rute')->nullable();
+            $table->text('body')->nullable();
 
             $table->timestamps();
         });
@@ -32,6 +34,6 @@ class CreateFollowersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('followers');
+        Schema::dropIfExists('medias');
     }
 }
