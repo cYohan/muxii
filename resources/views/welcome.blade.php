@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Bienvenido a Muxii')
+
 @section('content')
     <div class="container d-flex flex-column justify-content-center mt-5">
         <h1 class="text-center">MUXII</h1>

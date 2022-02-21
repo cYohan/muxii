@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\SpinOffsController;
 use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\StatusLikesController;
 
@@ -25,6 +26,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+/* Rutas de navegación principal */
+
+Route::get('/book', [BookController::class, 'index'])->name('book');
+
+/* Rutas de navegación secciones */
+
+Route::get('/book/spin-offs', [SpinOffsController::class, 'index'])->name('spin-offs');
+Route::get('/book/spin-offs/{id}', [SpinOffsController::class, 'show'])->name('spin-offs.show');
+
 
 /* Rutas de los Estados */
 

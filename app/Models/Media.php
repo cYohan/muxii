@@ -9,10 +9,14 @@ class Media extends Model
 {
     use HasFactory;
 
+    protected $table = "medias";
+
     protected $fillable = [
         'user_id',
+        'title',
         'rute',
-        'body'
+        'body',
+        'media_format'
     ];
 
     public function user()

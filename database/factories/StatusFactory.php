@@ -17,7 +17,7 @@ class StatusFactory extends Factory
             //
 
             'user_id' => $this->faker->randomElement([1, 2, 3]),
-            'body' => $this->faker->paragraph()
+            'body' => $this->faker->sentence()
         ];
     }
 }

@@ -28179,15 +28179,15 @@ var render = function () {
     _vm._l(_vm.statuses, function (status) {
       return _c(
         "div",
-        { staticClass: "card border-0 m-3 shadow-sm col-md-3" },
+        { staticClass: "card border-0 m-1 shadow-sm col-md-3" },
         [
           _c("div", { staticClass: "card-body d-flex flex-column" }, [
             _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
               _c("img", {
-                staticClass: "rounded-circle mr-3 ml-3 shadow-sm",
+                staticClass: "rounded-circle mr-3 ml-3 me-2 shadow-sm",
                 attrs: {
-                  width: "50px",
-                  src: "/images/avatar-default.png",
+                  width: "40px",
+                  src: "/img/avatar-default.png",
                   alt: "",
                 },
               }),

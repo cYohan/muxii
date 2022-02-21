@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Status;
+use App\Models\Media;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call(UsersSeeder::class);
+        $this->call(FormatsSeeder::class);
+
         Status::factory(10)->create();
+        Media::factory(50)->create();
     }
 }

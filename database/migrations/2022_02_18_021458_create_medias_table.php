@@ -19,9 +19,17 @@ class CreateMediasTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->morphs('mediable');
+
+            $table->foreignId('format_id')
+                ->constrained()
+                ->onDelete('cascade');
+
+            $table->string('title');
+            /*$table->morphs('mediable');*/
             $table->text('rute')->nullable();
             $table->text('body')->nullable();
+            $table->string('media_width')->nullable();
+            $table->string('media_height')->nullable();
 
             $table->timestamps();
         });
