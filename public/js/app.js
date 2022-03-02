@@ -5344,6 +5344,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -28175,12 +28181,13 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row d-flex justify-content-center" },
+    {
+      staticClass: "row row-cols-1 row-cols-md-3 g-4",
+      attrs: { "data-masonry": '{"percentPosition": true }' },
+    },
     _vm._l(_vm.statuses, function (status) {
-      return _c(
-        "div",
-        { staticClass: "card border-0 m-1 shadow-sm col-md-3" },
-        [
+      return _c("div", { staticClass: "col" }, [
+        _c("div", { staticClass: "m-1 card" }, [
           _c("div", { staticClass: "card-body d-flex flex-column" }, [
             _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
               _c("img", {
@@ -28210,8 +28217,8 @@ var render = function () {
               domProps: { textContent: _vm._s(status.body) },
             }),
           ]),
-        ]
-      )
+        ]),
+      ])
     }),
     0
   )

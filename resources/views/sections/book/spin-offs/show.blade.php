@@ -1,23 +1,35 @@
 @extends('layouts.app')
 
-@section('title', $spinOff->title)
+@section('title', 'Spin-off')
 
 @section('content')
-@include('partials.navigation')
+    @include('partials.navigation')
 
 
-<div class="container">
-    <h1 class="text-center">{{ $spinOff->title }}</h1>
+    <div class="container">
+        @foreach ($archivo->multimedias as $file)
+            @if ($file->subtype_id == 1)
+                <h1 class="text-center mb-5">{{ $file->name }}</h1>
 
-    <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
 
-        <div class="card-body">
+                            <p class="card-text">{{ $file->body }}</p>
 
-          <p class="card-text">{{  $spinOff->body  }}</p>
-        </div>
+                        </div>
+                    </div>
+            @endif
+            @if ($file->subtype_id == 2)
+                <div class="col-md-4">
 
-        <img src="/img/{{ $spinOff->rute }}" class="card-img-top" alt="{{ $spinOff->title }}">
+                    <img src="/img/{{ $file->rute }}" class="img-fluid rounded-start mt-4" alt="{{ $file->name }}">
+
+                </div>
     </div>
-</div>
+    @endif
+    @endforeach
+
+    </div>
 
 @endsection

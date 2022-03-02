@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\SpinOffsController;
+use App\Http\Controllers\ComicsController;
+
 use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\StatusLikesController;
 
@@ -35,6 +39,12 @@ Route::get('/book', [BookController::class, 'index'])->name('book');
 
 Route::get('/book/spin-offs', [SpinOffsController::class, 'index'])->name('spin-offs');
 Route::get('/book/spin-offs/{id}', [SpinOffsController::class, 'show'])->name('spin-offs.show');
+
+Route::get('/book/games', [GamesController::class, 'index'])->name('games');
+Route::get('/book/games/{id}', [GamesController::class, 'show'])->name('games.show');
+
+Route::get('/book/comics', [ComicsController::class, 'index'])->name('comics');
+Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
 
 
 /* Rutas de los Estados */

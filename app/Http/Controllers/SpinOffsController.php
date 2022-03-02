@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Media;
+use App\Models\File;
+use App\Models\Type;
+use App\Models\Multimedia;
 use Illuminate\Http\Request;
 
 class SpinOffsController extends Controller
@@ -11,15 +13,19 @@ class SpinOffsController extends Controller
 
     public function index()
     {
-        $spinOffs = Media::where('format_id', '1')->get();
+        $type = Type::where('name', 'Spin-off')->first();
+        $spinOffs = File::where('type_id', $type->id)->get();
 
         return view('sections.book.spin-offs.index', compact('spinOffs'));
     }
 
     public function show($id)
     {
-        $spinOff = Media::find($id);
+        $archivo = File::find($id);
+        $spinOff = $archivo->multimedias;
 
-        return view('sections.book.spin-offs.show', compact('spinOff'));
+        //return $archivo;
+
+        return view('sections.book.spin-offs.show', compact('archivo'));
     }
 }

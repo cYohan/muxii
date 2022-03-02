@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMediasTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,20 @@ class CreateMediasTable extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            //$table->morphs('fileable');
+            $table->text('description');
 
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
 
-            $table->foreignId('format_id')
+            $table->foreignId('type_id')
                 ->constrained()
                 ->onDelete('cascade');
-
-            $table->string('title');
-            /*$table->morphs('mediable');*/
-            $table->text('rute')->nullable();
-            $table->text('body')->nullable();
-            $table->string('media_width')->nullable();
-            $table->string('media_height')->nullable();
 
             $table->timestamps();
         });
@@ -42,6 +39,6 @@ class CreateMediasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medias');
+        Schema::dropIfExists('files');
     }
 }
