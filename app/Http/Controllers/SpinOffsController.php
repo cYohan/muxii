@@ -13,19 +13,19 @@ class SpinOffsController extends Controller
 
     public function index()
     {
-        $type = Type::where('name', 'Spin-off')->first();
-        $spinOffs = File::where('type_id', $type->id)->get();
+        $spinOffs = Type::where('name', 'Spin-off')->first()->files;
+
+        //return $spinOffs;
 
         return view('sections.book.spin-offs.index', compact('spinOffs'));
     }
 
     public function show($id)
     {
-        $archivo = File::find($id);
-        $spinOff = $archivo->multimedias;
+        $spinOff = File::find($id)->multimedias;
 
-        //return $archivo;
+        //return $spinOff;
 
-        return view('sections.book.spin-offs.show', compact('archivo'));
+        return view('sections.book.spin-offs.show', compact('spinOff'));
     }
 }

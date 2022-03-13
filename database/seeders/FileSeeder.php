@@ -65,6 +65,7 @@ class FileSeeder extends Seeder
 
         $comic1->title = "The Mad Squad";
         $comic1->description = "Un asesino loco, jovenes adolecentes y muchas hamburguesas, ¿Qué podría malir sal?";
+        $comic1->portada = "portada_tms.png";
         $comic1->user_id = 3;
         $comic1->type_id = 2;
 

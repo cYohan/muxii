@@ -13,8 +13,7 @@ class GamesController extends Controller
 
     public function index()
     {
-        $type = Type::where('name', 'Game')->first();
-        $games = File::where('type_id', $type->id)->get();
+        $games = Type::where('name', 'Game')->first()->files;
 
         //return $games;
 
@@ -23,10 +22,9 @@ class GamesController extends Controller
 
     public function show($id)
     {
-        $archivo = File::find($id);
-        $game = Multimedia::where('file_id', $archivo->id)->first();
+        $game = File::find($id)->multimedias->first();
 
-        //return $archivo;
+        //return $game;
 
         return view('sections.book.games.show', compact('game'));
     }

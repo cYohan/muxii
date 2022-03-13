@@ -5285,6 +5285,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5350,6 +5352,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5367,6 +5414,20 @@ __webpack_require__.r(__webpack_exports__);
     EventBus.$on('status-created', function (status) {
       _this.statuses.unshift(status);
     });
+  },
+  methods: {
+    like: function like(status) {
+      axios.post("/statuses/".concat(status.id, "/like")).then(function (res) {
+        status.is_liked = true;
+        status.likes_count++;
+      });
+    },
+    unlike: function unlike(status) {
+      axios["delete"]("/statuses/".concat(status.id, "/like")).then(function (res) {
+        status.is_liked = false;
+        status.likes_count--;
+      });
+    }
   }
 });
 
@@ -5470,6 +5531,11 @@ module.exports = {
     },
     guest: function guest() {
       return !this.isAutehnticated;
+    }
+  },
+  methods: {
+    redirectIfGuest: function redirectIfGuest() {
+      if (this.guest) return window.location.href = "/login";
     }
   }
 };
@@ -28082,7 +28148,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "card b-0" }, [
     _vm.isAuthenticated
       ? _c(
           "form",
@@ -28111,7 +28177,7 @@ var render = function () {
                   id: "body",
                   cols: "5",
                   rows: "5",
-                  placeholder: "¿En qué estas pensando?",
+                  placeholder: "¡Sorprendenos!",
                 },
                 domProps: { value: _vm.body },
                 on: {
@@ -28137,7 +28203,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-footer" }, [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Publicar")]),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { "data-bs-dismiss": "modal", "aria-label": "Close" },
+        },
+        [_vm._v("Publicar")]
+      ),
     ])
   },
   function () {
@@ -28181,12 +28254,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "row row-cols-1 row-cols-md-3 g-4",
-      attrs: { "data-masonry": '{"percentPosition": true }' },
-    },
+    { staticClass: "row row-cols-1 row-cols-md-3 g-4" },
     _vm._l(_vm.statuses, function (status) {
-      return _c("div", { staticClass: "col" }, [
+      return _c("div", { key: status.id, staticClass: "col" }, [
         _c("div", { staticClass: "m-1 card" }, [
           _c("div", { staticClass: "card-body d-flex flex-column" }, [
             _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
@@ -28204,11 +28274,6 @@ var render = function () {
                   staticClass: "mb-1",
                   domProps: { textContent: _vm._s(status.user_name) },
                 }),
-                _vm._v(" "),
-                _c("div", {
-                  staticClass: "small text-muted",
-                  domProps: { textContent: _vm._s(status.ago) },
-                }),
               ]),
             ]),
             _vm._v(" "),
@@ -28216,6 +28281,118 @@ var render = function () {
               staticClass: "card-text text-secondary",
               domProps: { textContent: _vm._s(status.body) },
             }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary w-50",
+                attrs: {
+                  type: "button",
+                  "data-bs-toggle": "offcanvas",
+                  "data-bs-target": "#offcanvasRight" + status.id,
+                  "aria-controls": "offcanvasRight",
+                },
+              },
+              [_vm._v("Ver")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "offcanvas offcanvas-end",
+                attrs: {
+                  tabindex: "-1",
+                  id: "offcanvasRight" + status.id,
+                  "aria-labelledby": "offcanvasRightLabel",
+                },
+              },
+              [
+                _c("button", {
+                  staticClass: "btn-close text-reset m-4",
+                  attrs: {
+                    type: "button",
+                    "data-bs-dismiss": "offcanvas",
+                    "aria-label": "Close",
+                  },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card w-75 mx-auto mt-4" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h5", {
+                      staticClass: "card-title",
+                      domProps: { textContent: _vm._s(status.user_name) },
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _c("small", {
+                        staticClass: "text-muted",
+                        domProps: { textContent: _vm._s(status.ago) },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", {
+                      staticClass: "card-text",
+                      domProps: { textContent: _vm._s(status.body) },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "card-footer d-flex justify-content-between align-items-center",
+                    },
+                    [
+                      _vm.isAuthenticated
+                        ? _c("div", [
+                            status.is_liked
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-outline-primary",
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.unlike(status)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("No me gusta")]
+                                )
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.like(status)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("Me gusta")]
+                                ),
+                          ])
+                        : _c("div", [
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm._v("Inicia sesión para interactuar"),
+                            ]),
+                          ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-secundary me-2" }, [
+                        _c("p", { staticClass: "card-text" }, [
+                          _vm._v("Likes: "),
+                          _c("small", {
+                            staticClass: "text-muted",
+                            domProps: {
+                              textContent: _vm._s(status.likes_count),
+                            },
+                          }),
+                        ]),
+                      ]),
+                    ]
+                  ),
+                ]),
+              ]
+            ),
           ]),
         ]),
       ])

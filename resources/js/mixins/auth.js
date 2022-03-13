@@ -12,4 +12,9 @@ module.exports = {
             return !this.isAutehnticated;
         },
     },
+    methods: {
+        redirectIfGuest() {
+            if (this.guest) return (window.location.href = "/login");
+        },
+    },
 };

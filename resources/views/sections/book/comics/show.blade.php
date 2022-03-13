@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $file->title)
+@section('title', $comic->title)
 
 @section('content')
     @include('partials.navigation')
 
     <div class="container">
 
-        <h1 class="text-center mb-5">{{ $file->title }}</h1>
+        <h1 class="text-center mb-5">{{ $comic->title }}</h1>
 
-        <div class="row g-0">
+        <div class="row g-0 d-flex justify-content-center">
 
             <div class="col-6">
 
@@ -17,11 +17,11 @@
                     <div class="carousel-inner">
 
                         {{ $init = 0 }}
-                        @foreach ($file->multimedias as $comic)
-                            @if ($comic->name != 'Portada')
+                        @foreach ($files as $page)
+                            @if ($page->name != 'Portada')
                                 <div class="carousel-item {{ $init ? '' : 'active' }}" data-bs-interval="10000">
 
-                                    <img src="/img/{{ $comic->rute }}" class="d-block w-100" alt="{{ $comic->name }}">
+                                    <img src="/img/{{ $page->rute }}" class="d-block w-100" alt="{{ $page->name }}">
 
                                 </div>
                                 {{ $init++ }}

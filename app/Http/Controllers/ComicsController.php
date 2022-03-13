@@ -9,26 +9,28 @@ use Illuminate\Http\Request;
 
 class ComicsController extends Controller
 {
-    //
 
     public function index()
     {
-        $type = Type::where('name', 'Comic')->first();
-        $comic = File::where('type_id', $type->id)->first();
-        $portada = $comic->multimedias->where('name', 'Portada')->first();
+        $comics = Type::where('name', 'Comic')->first()->files;
 
-        //return $portada;
+        //return $comics;
 
-        return view('sections.book.comics.index', compact('comic', 'portada'));
+        return view('sections.book.comics.index', compact('comics'));
     }
 
     public function show($id)
     {
-        $file = File::find($id);
-        $comic = $file->multimedias;
+        $files = File::find($id)->multimedias;
+        $comic = File::find($id);
 
-        //return $file;
+        //return $files;
 
-        return view('sections.book.comics.show', compact('file'));
+        return view('sections.book.comics.show', compact('comic', 'files'));
+    }
+
+    public function create()
+    {
+        return view('sections.book.comics.create');
     }
 }

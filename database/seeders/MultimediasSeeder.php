@@ -104,15 +104,6 @@ class MultimediasSeeder extends Seeder
 
         $game2->save();
 
-        $comic1 = new Multimedia();
-
-        $comic1->name = "Portada";
-        $comic1->rute = "portada_tms.png";
-        $comic1->file_id = 16;
-        $comic1->subtype_id = 2;
-
-        $comic1->save();
-
         $comic2 = new Multimedia();
 
         $comic2->name = "Página 1";

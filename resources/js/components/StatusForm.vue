@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card b-0">
         <form @submit.prevent="submit" v-if="isAuthenticated">
             <div class="card-body">
                 <textarea v-model="body"
@@ -8,10 +8,12 @@
                 id="body"
                 cols="5"
                 rows="5"
-                :placeholder="`¿En qué estas pensando?`"></textarea>
+                :placeholder="`¡Sorprendenos!`"></textarea>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary">Publicar</button>
+                <button class="btn btn-primary"
+                data-bs-dismiss="modal"
+                aria-label="Close">Publicar</button>
             </div>
         </form>
         <div v-else class="card-body">

@@ -12,6 +12,8 @@ use App\Http\Controllers\ComicsController;
 use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\StatusLikesController;
 
+use App\Http\Controllers\UploadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,8 +46,8 @@ Route::get('/book/games', [GamesController::class, 'index'])->name('games');
 Route::get('/book/games/{id}', [GamesController::class, 'show'])->name('games.show');
 
 Route::get('/book/comics', [ComicsController::class, 'index'])->name('comics');
+Route::get('/book/comics/create', [ComicsController::class, 'create'])->name('comics.create');
 Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
-
 
 /* Rutas de los Estados */
 
@@ -57,3 +59,7 @@ Route::post('statuses', [StatusesController::class, 'store'])->name('statuses.st
 
 Route::post('statuses/{status}/like', [StatusLikesController::class, 'store'])->name('statuses.likes.store')->middleware('auth');
 Route::delete('statuses/{status}/like', [StatusLikesController::class, 'destroy'])->name('statuses.likes.destroy')->middleware('auth');
+
+/* Uploads */
+
+Route::post('upload/comic', [UploadController::class, 'store'])->name('upload.comic');

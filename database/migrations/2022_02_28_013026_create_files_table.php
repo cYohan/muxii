@@ -19,6 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('title');
             //$table->morphs('fileable');
             $table->text('description');
+            $table->text('portada')->nullable();
 
             $table->foreignId('user_id')
                 ->constrained()

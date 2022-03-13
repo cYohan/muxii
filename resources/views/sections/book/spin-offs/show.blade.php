@@ -5,9 +5,8 @@
 @section('content')
     @include('partials.navigation')
 
-
     <div class="container">
-        @foreach ($archivo->multimedias as $file)
+        @foreach ($spinOff as $file)
             @if ($file->subtype_id == 1)
                 <h1 class="text-center mb-5">{{ $file->name }}</h1>
 
