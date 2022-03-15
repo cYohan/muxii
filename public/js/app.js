@@ -5280,26 +5280,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    status: {
+    model: {
       type: Object,
+      required: true
+    },
+    url: {
+      type: String,
       required: true
     }
   },
   methods: {
-    like: function like(status) {
-      axios.post("/statuses/".concat(status.id, "/like")).then(function (res) {
-        status.is_liked = true;
-        status.likes_count++;
+    toogle: function toogle() {
+      var _this = this;
+
+      var method = this.model.is_liked ? 'delete' : 'post';
+      axios[method](this.url).then(function (res) {
+        _this.model.is_liked = !_this.model.is_liked;
+
+        if (method === 'post') {
+          _this.model.likes_count++;
+        } else {
+          _this.model.likes_count--;
+        }
       });
+    }
+  },
+  computed: {
+    getText: function getText() {
+      return this.model.is_liked ? 'No me gusta' : 'Me gusta';
     },
-    unlike: function unlike(status) {
-      axios["delete"]("/statuses/".concat(status.id, "/like")).then(function (res) {
-        status.is_liked = false;
-        status.likes_count--;
-      });
+    getBtn: function getBtn() {
+      return this.model.is_liked ? 'btn btn-outline-primary' : 'btn btn-primary';
     }
   }
 });
@@ -5317,6 +5330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _LikeBtn_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeBtn.vue */ "./resources/js/components/LikeBtn.vue");
 //
 //
 //
@@ -5342,12 +5356,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     status: {
       type: Object,
       required: true
     }
+  },
+  components: {
+    LikeBtn: _LikeBtn_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -5365,6 +5385,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.newComment = '';
 
         _this.comments.push(res.data.data);
+      })["catch"](function (err) {
+        console.log(err.response.data);
       });
     }
   }
@@ -5502,6 +5524,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _LikeBtn_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeBtn.vue */ "./resources/js/components/LikeBtn.vue");
 /* harmony import */ var _StatusComments_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StatusComments.vue */ "./resources/js/components/StatusComments.vue");
+//
+//
 //
 //
 //
@@ -28513,31 +28537,18 @@ var render = function () {
     [
       _vm.isAuthenticated
         ? _c("div", [
-            _vm.status.is_liked
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-primary",
-                    on: {
-                      click: function ($event) {
-                        return _vm.unlike(_vm.status)
-                      },
-                    },
+            _c(
+              "button",
+              {
+                class: _vm.getBtn,
+                on: {
+                  click: function ($event) {
+                    return _vm.toogle()
                   },
-                  [_vm._v("No me gusta")]
-                )
-              : _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function ($event) {
-                        return _vm.like(_vm.status)
-                      },
-                    },
-                  },
-                  [_vm._v("Me gusta")]
-                ),
+                },
+              },
+              [_vm._v(_vm._s(_vm.getText))]
+            ),
           ])
         : _c("div", [
             _c("small", { staticClass: "text-muted" }, [
@@ -28550,7 +28561,7 @@ var render = function () {
           _vm._v("Likes: "),
           _c("small", {
             staticClass: "text-muted",
-            domProps: { textContent: _vm._s(_vm.status.likes_count) },
+            domProps: { textContent: _vm._s(_vm.model.likes_count) },
           }),
         ]),
       ]),
@@ -28584,57 +28595,86 @@ var render = function () {
     "div",
     { staticClass: "d-flex flex-column" },
     [
-      _c(
-        "form",
-        {
-          staticClass: "d-flex flex-column p-2",
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.addComment.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.newComment,
-                expression: "newComment",
-              },
-            ],
-            staticClass: "form-control border-0",
-            attrs: { name: "content" },
-            domProps: { value: _vm.newComment },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.newComment = $event.target.value
+      _vm.isAuthenticated
+        ? _c(
+            "form",
+            {
+              staticClass: "d-flex flex-column p-2",
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.addComment.apply(null, arguments)
+                },
               },
             },
-          }),
-          _c("br"),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn btn-primary pt-2" }, [
-            _vm._v("Comentar"),
-          ]),
-        ]
-      ),
+            [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newComment,
+                    expression: "newComment",
+                  },
+                ],
+                staticClass: "form-control border-0",
+                attrs: { name: "content" },
+                domProps: { value: _vm.newComment },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.newComment = $event.target.value
+                  },
+                },
+              }),
+              _c("br"),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn btn-primary pt-2" }, [
+                _vm._v("Comentar"),
+              ]),
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.comments, function (comment) {
-        return _c("div", { key: comment.id }, [
-          _c("div", { staticClass: "card" }, [
-            _c("ul", { staticClass: "list-group list-group-flush" }, [
-              _c("li", { staticClass: "list-group-item" }, [
-                _vm._v(_vm._s(comment.body)),
-              ]),
-            ]),
-          ]),
-        ])
+        return _c(
+          "div",
+          { key: comment.id, staticClass: "m-1" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "d-flex align-items-center mb-3 border-0 shadow-sm p-2",
+              },
+              [
+                _c("img", {
+                  staticClass: "rounded-circle mr-3 ml-3 me-2 shadow-sm",
+                  attrs: { width: "40px", src: comment.user_avatar, alt: "" },
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c("h5", {
+                    staticClass: "mb-1",
+                    domProps: { textContent: _vm._s(comment.user_name) },
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v(_vm._s(comment.body))]),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c("like-btn", {
+              attrs: {
+                model: comment,
+                url: "comments/" + comment.id + "/likes",
+              },
+            }),
+          ],
+          1
+        )
       }),
     ],
     2
@@ -28842,6 +28882,7 @@ var render = function () {
           "div",
           {
             staticClass: "offcanvas offcanvas-end w-40",
+            staticStyle: { overflow: "scroll" },
             attrs: {
               tabindex: "-1",
               id: "offcanvasRight" + _vm.status.id,
@@ -28881,7 +28922,12 @@ var render = function () {
                   }),
                 ]),
                 _vm._v(" "),
-                _c("like-btn", { attrs: { status: _vm.status } }),
+                _c("like-btn", {
+                  attrs: {
+                    url: "statuses/" + _vm.status.id + "/like",
+                    model: _vm.status,
+                  },
+                }),
                 _vm._v(" "),
                 _c("status-comments", { attrs: { status: _vm.status } }),
               ],

@@ -20,9 +20,9 @@ class CreateLikesTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
 
-            //$table->morphs('likeable');
+            $table->morphs('likeable');
 
-            $table->unsignedInteger('status_id');
+            //$table->unsignedInteger('status_id');
 
             $table->timestamps();
         });

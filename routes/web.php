@@ -11,7 +11,9 @@ use App\Http\Controllers\ComicsController;
 
 use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\StatusLikesController;
+
 use App\Http\Controllers\StatusCommentsController;
+use App\Http\Controllers\CommentLikesController;
 
 use App\Http\Controllers\UploadController;
 
@@ -50,13 +52,13 @@ Route::get('/book/comics', [ComicsController::class, 'index'])->name('comics');
 Route::get('/book/comics/create', [ComicsController::class, 'create'])->name('comics.create');
 Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
 
-/* Rutas de los Estados */
+/* Status */
 
 Route::get('statuses', [StatusesController::class, 'index'])->name('statuses.index');
 Route::get('statuses/{status}', [StatusesController::class, 'show'])->name('statuses.show');
 Route::post('statuses', [StatusesController::class, 'store'])->name('statuses.store')->middleware('auth');
 
-/* Likes */
+/* Likes Status */
 
 Route::post('statuses/{status}/like', [StatusLikesController::class, 'store'])->name('statuses.likes.store')->middleware('auth');
 Route::delete('statuses/{status}/like', [StatusLikesController::class, 'destroy'])->name('statuses.likes.destroy')->middleware('auth');
@@ -64,6 +66,11 @@ Route::delete('statuses/{status}/like', [StatusLikesController::class, 'destroy'
 /* Comments */
 
 Route::post('statuses/{status}/comment', [StatusCommentsController::class, 'store'])->name('statuses.comments.store')->middleware('auth');
+
+/* Likes Comments */
+
+Route::post('comments/{comment}/likes', [CommentLikesController::class, 'store'])->name('comments.likes.store')->middleware('auth');
+Route::delete('comments/{comment}/likes', [CommentLikesController::class, 'destroy'])->name('comments.likes.destroy')->middleware('auth');
 
 /* Uploads */
 

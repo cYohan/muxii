@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Status;
+
+use App\Trait\HasLikes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +13,8 @@ class Comment extends Model
 {
 
     use HasFactory;
+
+    use HasLikes;
     /* protected $table = "comentarios"; */
 
     protected $fillable = [
@@ -21,11 +25,11 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function status()
     {
-        return $this->belongTo(Status::class);
+        return $this->belongsTo(Status::class);
     }
 }
