@@ -11,6 +11,7 @@ use App\Http\Controllers\ComicsController;
 
 use App\Http\Controllers\StatusesController;
 use App\Http\Controllers\StatusLikesController;
+use App\Http\Controllers\StatusCommentsController;
 
 use App\Http\Controllers\UploadController;
 
@@ -59,6 +60,10 @@ Route::post('statuses', [StatusesController::class, 'store'])->name('statuses.st
 
 Route::post('statuses/{status}/like', [StatusLikesController::class, 'store'])->name('statuses.likes.store')->middleware('auth');
 Route::delete('statuses/{status}/like', [StatusLikesController::class, 'destroy'])->name('statuses.likes.destroy')->middleware('auth');
+
+/* Comments */
+
+Route::post('statuses/{status}/comment', [StatusCommentsController::class, 'store'])->name('statuses.comments.store')->middleware('auth');
 
 /* Uploads */
 
