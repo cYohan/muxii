@@ -6,19 +6,31 @@ use App\Models\User;
 use App\Models\Comment;
 
 use App\Trait\HasLikes;
+
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Status extends Model implements HasMedia
 {
-    use HasFactory;
-    use HasLikes;
+    use HasFactory, HasLikes, InteractsWithMedia;
 
     protected $fillable = [
         'user_id',
         'body',
     ];
 
+    /* Creamos la colecccion de la galeria */
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('media')
+            ->useDisk('media');
+    }
+
+    /* Construcción de relaciones */
 
     public function user()
     {
@@ -28,5 +40,10 @@ class Status extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function images()
+    {
+        return $this->getMedia('media');
     }
 }

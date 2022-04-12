@@ -4,13 +4,20 @@
                 <div class="m-1 card">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
-                            <img class="rounded-circle mr-3 ml-3 me-2 shadow-sm" width= "40px" src="/img/avatar-default.png" alt="">
+                            <img class="rounded-circle mr-3 ml-3 me-2 shadow-sm" width= "40px" :src="status.user.avatar" :alt="status.user.name">
                             <div>
-                                <h5 class="mb-1" v-text="status.user_name"></h5>
+                                <h5 class="mb-1"><a :href="status.user.link" v-text="status.user.name"></a></h5>
 
                             </div>
                         </div>
                         <p class="card-text text-secondary" v-text="status.body"></p>
+                        <div class="images mb-2">
+                            <div v-for="image in images" :key="image.id">
+                                <div class="item">
+                                    <img :src="`/storage/media/${status.id}/${image.file_name}`" class="img-fluid" alt="img">
+                                </div>
+                            </div>
+                        </div>
                         <button class="btn btn-primary w-50" type="button" data-bs-toggle="offcanvas" :data-bs-target="`#offcanvasRight${status.id}`" aria-controls="offcanvasRight">Ver</button>
 
                         <div class="offcanvas offcanvas-end w-40" tabindex="-1" :id="`offcanvasRight${status.id}`" aria-labelledby="offcanvasRightLabel" style="overflow: scroll;">
@@ -27,9 +34,17 @@
                             <div class="card w-75 mx-auto mt-4">
                                 <div class="card-body">
 
-                                    <h5 class="card-title" v-text="status.user_name"></h5>
+                                    <h5 class="mb-1"><a :href="status.user.link" v-text="status.user.name"></a></h5>
                                     <p class="card-text"><small class="text-muted" v-text="status.ago"></small></p>
                                     <p class="card-text" v-text="status.body"></p>
+
+                                    <div class="images mb-2">
+                                        <div v-for="image in images" :key="image.id">
+                                            <div class="item">
+                                                <img :src="`/storage/media/${status.id}/${image.file_name}`" class="img-fluid" alt="img">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <like-btn
@@ -67,6 +82,11 @@
                 required: true
             }
         },
+         data(){
+            return {
+                images: this.status.images
+            }
+        },
         components: {
             LikeBtn,
             StatusComments
@@ -76,5 +96,14 @@
 </script>
 
 <style lang="scss" scoped>
+.item {
+        width: 100px;
+        float: left;
+    }
+    .item img {
+        display: block;
+        width: 100%;
+        padding: 0px 2px 0px 2px;
+    }
 
 </style>

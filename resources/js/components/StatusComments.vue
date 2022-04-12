@@ -9,9 +9,9 @@
         <div v-for="comment in comments" :key="comment.id" class="m-1">
 
             <div class="d-flex align-items-center mb-3 border-0 shadow-sm p-2">
-                <img class="rounded-circle mr-3 ml-3 me-2 shadow-sm" width= "40px" :src="comment.user_avatar" alt="">
+                <img class="rounded-circle mr-3 ml-3 me-2 shadow-sm" width= "40px" :src="comment.user.avatar" :alt="status.user.name">
                 <div>
-                    <h5 class="mb-1" v-text="comment.user_name"></h5>
+                    <h5 class="mb-1"><a :href="status.user.link" v-text="status.user.name"></a></h5>
                     <p>{{ comment.body }}</p>
                 </div>
             </div>

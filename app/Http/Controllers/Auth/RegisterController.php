@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\TemporalyFile;
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -66,12 +68,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'first_name' => $data['name'],
             'last_name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if ($data['avatar']) {
+            $temporalyFile = TemporalyFile::where('folder', $data['avatar'])->first();
+
+            $url = $temporalyFile->folder . '/' . $temporalyFile->filename;
+
+            if ($temporalyFile) {
+
+                $user->addMedia(storage_path('app/avatars/tmp/' . $url))->toMediaCollection('avatars');
+
+                rmdir(storage_path('app/avatars/tmp/' . $data['avatar']));
+                $temporalyFile->delete();
+            }
+        }
+
+        return $user;
     }
 }

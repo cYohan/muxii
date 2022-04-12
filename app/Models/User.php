@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,10 @@ class User extends Authenticatable
         'birthday',
         'email',
         'password',
+    ];
+
+    protected $appends = [
+        'avatar'
     ];
 
     /**
@@ -48,6 +54,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Manejo de multimedia para los usuarios - Avatars
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatars')
+            ->useDisk('avatars');
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->avatar();
+    }
+
     public function statuses()
     {
         return $this->hasMany(Status::class);
@@ -56,5 +75,24 @@ class User extends Authenticatable
     public function files()
     {
         return $this->hasMany(File::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
+    public function link()
+    {
+        return route('users.show', $this);
+    }
+
+    public function avatar()
+    {
+        if ($this->getFirstMedia('avatars')) {
+            return $this->getFirstMedia('avatars')->getFullUrl();
+        }
+
+        return '/img/avatar-default.png';
     }
 }

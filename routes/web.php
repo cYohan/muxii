@@ -15,6 +15,8 @@ use App\Http\Controllers\StatusLikesController;
 use App\Http\Controllers\StatusCommentsController;
 use App\Http\Controllers\CommentLikesController;
 
+use App\Http\Controllers\UsersController;
+
 use App\Http\Controllers\UploadController;
 
 /*
@@ -52,6 +54,8 @@ Route::get('/book/comics', [ComicsController::class, 'index'])->name('comics');
 Route::get('/book/comics/create', [ComicsController::class, 'create'])->name('comics.create');
 Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
 
+Route::post('/book/comics/create', [ComicsController::class, 'store'])->name('comic.store');
+
 /* Status */
 
 Route::get('statuses', [StatusesController::class, 'index'])->name('statuses.index');
@@ -74,4 +78,8 @@ Route::delete('comments/{comment}/likes', [CommentLikesController::class, 'destr
 
 /* Uploads */
 
-Route::post('upload/comic', [UploadController::class, 'store'])->name('upload.comic');
+Route::post('upload', [UploadController::class, 'store']);
+
+/* Users */
+
+Route::get('@{user}', [UsersController::class, 'show'])->name('users.show');

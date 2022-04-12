@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Muxii')
+@section('title', 'Muxii Web')
 
 @section('content')
     @include('partials.navigation')

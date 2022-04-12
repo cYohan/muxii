@@ -11,7 +11,23 @@ class CreateMediaTable extends Migration
         Schema::create('media', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            //$table->morphs('model');
+            $table->text('body')->nullable();
+
+            /*
+
+            $table->foreignId('file_id')
+                ->constrained()
+                ->onDelete('cascade')
+                ->nullable();
+
+            $table->foreignId('subtype_id')
+                ->constrained()
+                ->onDelete('cascade')
+                ->nullable();
+
+            */
+
+            $table->morphs('model');
             $table->uuid('uuid')->nullable();
             $table->string('collection_name');
             $table->string('name');
@@ -25,16 +41,6 @@ class CreateMediaTable extends Migration
             $table->json('generated_conversions');
             $table->json('responsive_images');
             $table->unsignedInteger('order_column')->nullable();
-
-            $table->text('body')->nullable();
-
-            $table->foreignId('file_id')
-                ->constrained()
-                ->onDelete('cascade');
-
-            $table->foreignId('subtype_id')
-                ->constrained()
-                ->onDelete('cascade');
 
             $table->nullableTimestamps();
         });

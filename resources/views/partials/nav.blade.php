@@ -65,7 +65,7 @@
 
                                         <div class="collapse" id="collapseImg">
 
-                                            <p>¡Sube tu imagen!</p>
+                                            <img-form></img-form>
 
                                         </div>
 

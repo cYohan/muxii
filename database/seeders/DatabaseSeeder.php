@@ -19,17 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $this->call(UsersSeeder::class);
-
-        Status::factory(10)->create();
-
         $this->call(TypesSeeder::class);
         $this->call(SubtypeSeeder::class);
-
-        File::factory(10)->create();
-        Multimedia::factory(10)->create();
-
-        $this->call(FileSeeder::class);
-        $this->call(MultimediasSeeder::class);
     }
 }

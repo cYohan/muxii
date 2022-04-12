@@ -22,7 +22,7 @@ class StatusesController extends Controller
         /* $validStatus = $request->validate(['body' => 'required|min:5']); */
 
         request()->validate([
-            'body' => 'required|min:5'
+            'body' => 'required|min:1'
         ]);
 
         /* $status = $request->user()->statuses()->create($validStatus); */
@@ -32,8 +32,25 @@ class StatusesController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        /* return $status; */
+        /* Guardamos en la base de datos y en el storage de laravel */
 
-        return StatusResource::make($status);
+        if ($request->has('files')) {
+
+            foreach ($request->file('files') as $file) {
+
+                $extension = $file->getClientOriginalExtension();
+                $filename = uniqid() . '-' . now()->timestamp;
+
+                $custom_filename = $filename . '.' . $extension;
+
+                $status->addMedia($file)
+                    ->usingFileName($custom_filename)
+                    ->toMediaCollection('media');
+            }
+        }
+
+        $statusResource = StatusResource::make($status);
+
+        return  $statusResource;
     }
 }

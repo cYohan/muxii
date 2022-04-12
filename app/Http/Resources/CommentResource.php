@@ -19,9 +19,7 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'body' => $this->body,
-            //'user'     => UserResource::make($this->user),
-            'user_name' => $this->user->name,
-            'user_avatar' => '/img/avatar-default.png',
+            'user'     => UserResource::make($this->user),
             'ago' => $this->created_at->diffForHumans(), //Carbon
             'likes_count' => $this->likesCount(),
             'is_liked' => $this->isLiked(),

@@ -5,18 +5,33 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Multimedia;
 use App\Models\Type;
+
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class File extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fileable = [
         'title',
         'description',
         'user_id',
     ];
+
+    public function comicMediaCollections(): void
+    {
+        $this->addMediaCollection('comics')
+            ->useDisk('comics');
+    }
+
+    public function images()
+    {
+        return $this->getMedia('comics');
+    }
 
     public function user()
     {

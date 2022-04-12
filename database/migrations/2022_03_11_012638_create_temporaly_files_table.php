@@ -17,7 +17,7 @@ class CreateTemporalyFilesTable extends Migration
             $table->id();
 
             $table->string('folder');
-            $table->string('filname');
+            $table->string('filename');
             $table->string('extension');
 
             $table->timestamps();

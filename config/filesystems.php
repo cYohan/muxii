@@ -38,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -51,6 +51,23 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        ],
+
+        'avatars' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/avatars'),
+            'url'    => env('APP_URL') . '/storage/avatars',
+        ],
+        'media' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/media'),
+            'url'    => env('APP_URL') . '/storage/media',
+        ],
+
+        'comics' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/comics'),
+            'url'    => env('APP_URL') . '/storage/comics',
         ],
 
     ],
