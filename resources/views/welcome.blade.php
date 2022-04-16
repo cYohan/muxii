@@ -7,4 +7,5 @@
         <h1 class="text-center">MUXII</h1>
         <a href="{{ route('home') }}" class="btn btn-outline-primary w-50 mx-auto mt-5">GET STARTED</a>
     </div>
+    
 @endsection

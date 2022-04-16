@@ -34,10 +34,10 @@
 
 <body>
 
-    <div id="app">
-        @include('partials.nav')
+    <div id="app" class="bg-[#151515]">
+        <!-- @include('partials.nav') -->
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
