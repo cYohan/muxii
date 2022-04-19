@@ -35,8 +35,6 @@
 <body>
 
     <div id="app" class="bg-[#151515]">
-        <!-- @include('partials.nav') -->
-
         <main class="">
             @yield('content')
         </main>

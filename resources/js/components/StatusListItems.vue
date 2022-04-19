@@ -19,7 +19,15 @@
                             </div>
                         </div>
                         <button class="btn btn-primary w-50" type="button" data-bs-toggle="offcanvas" :data-bs-target="`#offcanvasRight${status.id}`" aria-controls="offcanvasRight">Ver</button>
+                        
 
+
+
+
+
+
+
+                        
                         <div class="offcanvas offcanvas-end w-40" tabindex="-1" :id="`offcanvasRight${status.id}`" aria-labelledby="offcanvasRightLabel" style="overflow: scroll;">
                             <!--
                             <div class="offcanvas-header">
