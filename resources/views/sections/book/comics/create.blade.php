@@ -13,7 +13,10 @@
             <div class="col-md-6 mx-auto">
                 <div class="card bg-light px-4 py-2">
 
-                    <form class="row g-3" method="post" action="{{ route('comic.store') }}">
+                    <form class="row g-3" method="post" action="{{ route('comic.store') }}"
+                        enctype="multipart/form-data">
+
+                        @csrf
 
                         <div class="col-md-12">
                             <label for="inputName4" class="form-label">Titulo</label>
@@ -27,7 +30,7 @@
                         <div class="col-12">
                             <label>¡Sube tu cómic!</label>
                             <div class="col-md-12">
-                                <input type="file" name="imagenes" max-file="4" allow-multiple="true" instant-upload="false"
+                                <input type="file" name="comic" max-file="4" allow-multiple="true" instant-upload="false"
                                     class="mt-2" id="comic">
                             </div>
                         </div>
@@ -61,7 +64,7 @@
 
         FilePond.setOptions({
             server: {
-                url: '/book/comics/create',
+                url: '/comic/store',
                 process: {
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'

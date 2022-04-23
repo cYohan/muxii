@@ -39,22 +39,33 @@ class ComicsController extends Controller
     {
         $tipo = Type::where('name', 'Comic')->first();
 
-        $file = new File();
+        $fileComic = new File();
 
-        $file->user_id = auth()->id();
-        $file->type_id = $tipo->id;
-        $file->title = $request->title;
-        $file->description = $request->description;
+        $fileComic->user_id = auth()->id();
+        $fileComic->type_id = $tipo->id;
+        $fileComic->title = $request->title;
+        $fileComic->description = $request->description;
 
-        if ($request->hasFile('avatar')) {
-            $file = $request->file('avatar');
+        $fileComic->save();
+
+        //return redirect(route('home'));
+    }
+
+    public function storeAsComis(Request $request)
+    {
+        return $request->comic;
+        if ($request->hasFile('comic')) {
+            $file = $request->file('comic');
             $filename = $file->getClientOriginalName(); //Nombre del archivo
             $extension = $file->getClientOriginalExtension(); //Extensión del archivo
 
             $folder = uniqid() . '_' . now()->timestamp; //Nombre del folder donde se va a guardar
-            $file->storeAs('avatars/tmp/' . $folder, $filename); //Ruta donde se va a guardar el archivo
 
-            return $folder;
+            $url = $folder . '/' . $filename;
+
+            $file->addMedia(storage_path('app/media/comics/' . $url))->toMediaCollection('media'); //Ruta donde se va a guardar el archivo
+
+            return redirect(route('comics'));
         }
     }
 }

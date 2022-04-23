@@ -18,7 +18,9 @@ class StatusResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'title' => $this->title,
             'body' => $this->body,
+            'type' => $this->type,
             'user'     => UserResource::make($this->user),
             'ago' => $this->created_at->diffForHumans(), //Carbon
             'is_liked' => $this->isLiked(),

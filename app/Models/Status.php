@@ -20,6 +20,8 @@ class Status extends Model implements HasMedia
     protected $fillable = [
         'user_id',
         'body',
+        'title',
+        'type',
     ];
 
     /* Creamos la colecccion de la galeria */
