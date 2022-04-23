@@ -10,7 +10,7 @@
 
                             </div>
                         </div>
-                        <p class="card-text text-secondary" v-text="status.body"></p>
+                        <p class="card-text text-secondary" v-text="status.title"></p>
                         <div class="images mb-2">
                             <div v-for="image in images" :key="image.id">
                                 <div class="item">
@@ -34,6 +34,7 @@
                             <div class="card w-75 mx-auto mt-4">
                                 <div class="card-body">
 
+                                    <h3 class="mb-1" v-text="status.title"></h3>
                                     <h5 class="mb-1"><a :href="status.user.link" v-text="status.user.name"></a></h5>
                                     <p class="card-text"><small class="text-muted" v-text="status.ago"></small></p>
                                     <p class="card-text" v-text="status.body"></p>

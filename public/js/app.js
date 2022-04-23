@@ -5300,6 +5300,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* Importar la libreia de Filepond para Vue */
 
@@ -5322,7 +5336,9 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
     return {
       myFiles: [],
       formData: {
-        body: ''
+        body: '',
+        title: '',
+        type: 'img'
       }
     };
   },
@@ -5338,6 +5354,8 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
 
       var formData = new FormData();
       formData.append('body', this.formData.body);
+      formData.append('title', this.formData.title);
+      formData.append('type', this.formData.type);
 
       for (var i = 0; i < this.myFiles.length; i++) {
         var file = this.myFiles[i];
@@ -5351,11 +5369,13 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
 
         /* this.statuses.push(res.data); */
         EventBus.$emit('status-created', res.data.data);
-        _this.body = '';
+        _this.formData.body = '';
+        _this.formData.title = '';
         _this.myFiles = [];
       })["catch"](function (err) {
         console.log(err.response.data);
       });
+      this.myFiles = [];
     },
     handleFilePondInit: function handleFilePondInit() {
       console.log('FilePond has initialized');
@@ -5544,27 +5564,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      body: ''
-      /* statuses: [] */
-
+      formData: {
+        body: '',
+        title: '',
+        type: 'write'
+      }
     };
   },
   methods: {
     submit: function submit() {
       var _this = this;
 
+      var formData = new FormData();
+      formData.append('body', this.formData.body);
+      formData.append('title', this.formData.title);
+      formData.append('type', this.formData.type);
       /* alert('enviando ....'); */
-      axios.post('/statuses', {
-        body: this.body
-      }).then(function (res) {
+
+      axios.post('/statuses', formData).then(function (res) {
         /* console.log(res.data); */
 
         /* this.statuses.push(res.data); */
         EventBus.$emit('status-created', res.data.data);
-        _this.body = '';
+        _this.formData.body = '';
+        _this.formData.title = '';
       })["catch"](function (err) {
         console.log(err.response.data);
       });
@@ -5638,6 +5669,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _LikeBtn_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LikeBtn.vue */ "./resources/js/components/LikeBtn.vue");
 /* harmony import */ var _StatusComments_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StatusComments.vue */ "./resources/js/components/StatusComments.vue");
+//
 //
 //
 //
@@ -46268,27 +46300,57 @@ var render = function () {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formData.body,
-                      expression: "formData.body",
+                      value: _vm.formData.title,
+                      expression: "formData.title",
                     },
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
                     placeholder: "Titulo",
-                    name: "body",
-                    id: "body",
+                    name: "title",
+                    id: "title",
                   },
-                  domProps: { value: _vm.formData.body },
+                  domProps: { value: _vm.formData.title },
                   on: {
                     input: function ($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.formData, "body", $event.target.value)
+                      _vm.$set(_vm.formData, "title", $event.target.value)
                     },
                   },
                 }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.body,
+                        expression: "formData.body",
+                      },
+                    ],
+                    staticClass: "form-control border-0",
+                    attrs: {
+                      name: "body",
+                      id: "body",
+                      cols: "5",
+                      rows: "5",
+                      placeholder: "Descripción",
+                    },
+                    domProps: { value: _vm.formData.body },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "body", $event.target.value)
+                      },
+                    },
+                  }),
+                ]),
                 _vm._v(" "),
                 _c("file-pond", {
                   ref: "pond",
@@ -46308,6 +46370,27 @@ var render = function () {
               ],
               1
             ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formData.type,
+                  expression: "formData.type",
+                },
+              ],
+              attrs: { type: "hidden", name: "type", value: "img" },
+              domProps: { value: _vm.formData.type },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.formData, "type", $event.target.value)
+                },
+              },
+            }),
             _vm._v(" "),
             _vm._m(0),
           ]
@@ -46564,14 +46647,41 @@ var render = function () {
             },
           },
           [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formData.title,
+                  expression: "formData.title",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                placeholder: "Titulo",
+                name: "title",
+                id: "title",
+              },
+              domProps: { value: _vm.formData.title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.formData, "title", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("textarea", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body",
+                    value: _vm.formData.body,
+                    expression: "formData.body",
                   },
                 ],
                 staticClass: "form-control border-0",
@@ -46582,17 +46692,38 @@ var render = function () {
                   rows: "5",
                   placeholder: "¡Sorprendenos!",
                 },
-                domProps: { value: _vm.body },
+                domProps: { value: _vm.formData.body },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.body = $event.target.value
+                    _vm.$set(_vm.formData, "body", $event.target.value)
                   },
                 },
               }),
             ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formData.type,
+                  expression: "formData.type",
+                },
+              ],
+              attrs: { type: "hidden", value: "write", name: "type" },
+              domProps: { value: _vm.formData.type },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.formData, "type", $event.target.value)
+                },
+              },
+            }),
             _vm._v(" "),
             _vm._m(0),
           ]
@@ -46715,7 +46846,7 @@ var render = function () {
         _vm._v(" "),
         _c("p", {
           staticClass: "card-text text-secondary",
-          domProps: { textContent: _vm._s(_vm.status.body) },
+          domProps: { textContent: _vm._s(_vm.status.title) },
         }),
         _vm._v(" "),
         _c(
@@ -46778,6 +46909,11 @@ var render = function () {
               { staticClass: "card w-75 mx-auto mt-4" },
               [
                 _c("div", { staticClass: "card-body" }, [
+                  _c("h3", {
+                    staticClass: "mb-1",
+                    domProps: { textContent: _vm._s(_vm.status.title) },
+                  }),
+                  _vm._v(" "),
                   _c("h5", { staticClass: "mb-1" }, [
                     _c("a", {
                       attrs: { href: _vm.status.user.link },

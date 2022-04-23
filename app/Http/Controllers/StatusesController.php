@@ -22,13 +22,15 @@ class StatusesController extends Controller
         /* $validStatus = $request->validate(['body' => 'required|min:5']); */
 
         request()->validate([
-            'body' => 'required|min:1'
+            'title' => 'required|min:1'
         ]);
 
         /* $status = $request->user()->statuses()->create($validStatus); */
 
         $status = Status::create([
+            'title' => request('title'),
             'body' => request('body'),
+            'type' => request('type'),
             'user_id' => auth()->id()
         ]);
 

@@ -20,7 +20,9 @@ class CreateStatusesTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
 
+            $table->text('title');
             $table->text('body')->nullable();
+            $table->text('type')->nullable();
 
             $table->timestamps();
         });

@@ -1,8 +1,10 @@
 <template>
     <div class="card b-0">
         <form @submit.prevent="submit" v-if="isAuthenticated">
+
+            <input type="text" placeholder="Titulo" v-model="formData.title" name="title" class="form-control" id="title">
             <div class="card-body">
-                <textarea v-model="body"
+                <textarea v-model="formData.body"
                 class="form-control border-0"
                 name="body"
                 id="body"
@@ -10,6 +12,9 @@
                 rows="5"
                 :placeholder="`¡Sorprendenos!`"></textarea>
             </div>
+
+            <input type="hidden" value="write" name="type" v-model="formData.type">
+
             <div class="card-footer">
                 <button class="btn btn-primary"
                 data-bs-dismiss="modal"
@@ -28,19 +33,31 @@
 
         data(){
             return {
-                body: '',
-                /* statuses: [] */
+                formData: {
+                    body: '',
+                    title: '',
+                    type: 'write',
+                }
             }
         },
         methods:{
             submit(){
+
+                const formData = new FormData();
+
+                formData.append('body', this.formData.body);
+                formData.append('title', this.formData.title);
+                formData.append('type', this.formData.type);
+
                /* alert('enviando ....'); */
-               axios.post('/statuses', {body: this.body})
+               axios.post('/statuses', formData)
                     .then(res => {
                         /* console.log(res.data); */
                         /* this.statuses.push(res.data); */
                         EventBus.$emit('status-created', res.data.data);
-                        this.body = '';
+                        this.formData.body = '';
+                        this.formData.title = '';
+
                     })
                     .catch(err => {
                         console.log(err.response.data)

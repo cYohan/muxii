@@ -24,14 +24,18 @@ class File extends Model implements HasMedia
 
     public function comicMediaCollections(): void
     {
-        $this->addMediaCollection('comics')
-            ->useDisk('comics');
+        $this->addMediaCollection('media')
+            ->useDisk('media');
     }
+
+    /*
 
     public function images()
     {
         return $this->getMedia('comics');
     }
+
+    */
 
     public function user()
     {
