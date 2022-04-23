@@ -34,10 +34,8 @@
 
 <body>
 
-    <div id="app">
-        @include('partials.nav')
-
-        <main class="py-4">
+    <div id="app" class="bg-[#151515]">
+        <main class="">
             @yield('content')
         </main>
     </div>
