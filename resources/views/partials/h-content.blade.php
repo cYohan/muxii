@@ -1,4 +1,4 @@
-<div id="page-content">
+<div id="page-content" class="">
             <div class="container my-2 mx-auto">
                 <img src="/img/banner.jpg" class="mx-auto" alt="">
             </div>
@@ -23,17 +23,10 @@
                         class="px-2 py-1 mx-1 text-xs font-sans font-extrabold text-center text-white bg-[#656565] w-28 rounded-full"></button>
                 </div>
 
-                <div id="content" class="w-full mx-auto">
+                <div id="content" class="max-w-full mx-auto">
 
-
-
-                    <div id="cards-container" class="masonry sm:masonry-sm md:masonry-md">
-                        <!-- NO ELIMINAR (Pendiente de revisión) -->
-                        <div class="hidden max-w-sm rounded-xl my-4 row-span-1 border-4 border-pinky"></div>
-                        <div class="hidden max-w-sm rounded-xl my-4 row-span-1 border-4 border-gr"></div>
-                        <div class="hidden max-w-sm rounded-xl my-4 row-span-1 border-4 border-cyan"></div>
-                        <div class="hidden max-w-sm rounded-xl my-4 row-span-1 border-4 border-yellow"></div>
-
+                    <div id="cards-container" class="columns-4 gap-0 mx-auto h-screen">
+                        <status-list></status-list>
                     </div>
                 </div>
 

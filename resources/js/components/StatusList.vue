@@ -1,13 +1,12 @@
 <template>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div>
 
             <StatusListItems
                   v-for="status in statuses"
                   :status="status"
                   :key="status.id"
             ></StatusListItems>
-
         </div>
 </template>
 
