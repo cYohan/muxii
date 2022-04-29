@@ -25,7 +25,7 @@
 
                 <div id="content" class="max-w-full mx-auto">
 
-                    <div id="cards-container" class="columns-4 gap-0 mx-auto h-screen">
+                    <div id="cards-container" class="md:masonry-2-col lg:masonry-4-col box-border mx-auto before:box-inherit after:box-inherit">
                         <status-list></status-list>
                     </div>
                 </div>

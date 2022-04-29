@@ -2,7 +2,7 @@
   <div
     v-if="status.type == 'img'"
     class="
-      masonry-grid-item
+      break-inside
       max-w-sm
       w-full
       h-auto
@@ -31,6 +31,7 @@
       <span v-text="status.title" class="text-white pl-7 text-lg"></span>
     </div>
   </div>
+
 </template>
 
 <script>

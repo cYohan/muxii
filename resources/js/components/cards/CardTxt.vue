@@ -2,7 +2,7 @@
   <div
     v-if="status.type == 'write'"
     class="
-      masonry-grid-item
+      break-inside
       max-w-sm
       w-full
       text-left

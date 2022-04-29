@@ -5810,6 +5810,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     status: {
@@ -47225,7 +47226,7 @@ var render = function () {
         "div",
         {
           staticClass:
-            "\n    masonry-grid-item\n    max-w-sm\n    w-full\n    h-auto\n    text-left\n    my-2\n    row-span-1\n    cursor-pointer\n  ",
+            "\n    break-inside\n    max-w-sm\n    w-full\n    h-auto\n    text-left\n    my-2\n    row-span-1\n    cursor-pointer\n  ",
           attrs: {
             "data-bs-toggle": "offcanvas",
             "data-bs-target": "#offcanvasRight" + _vm.status.id,
@@ -47309,7 +47310,7 @@ var render = function () {
         "div",
         {
           staticClass:
-            "\n    masonry-grid-item\n    max-w-sm\n    w-full\n    text-left\n    my-2\n    p-1\n    row-span-1\n    cursor-pointer\n  ",
+            "\n    break-inside\n    max-w-sm\n    w-full\n    text-left\n    my-2\n    p-1\n    row-span-1\n    cursor-pointer\n  ",
           attrs: {
             "data-bs-toggle": "offcanvas",
             "data-bs-target": "#offcanvasRight" + _vm.status.id,
