@@ -13,27 +13,43 @@
             <!--
 
 
-        <div class="col">
+                                                                                    <div class="col">
 
-                                <div class="card bg-dark text-white">
-                                    <img src="/img/..." class="card-img" alt="...">
-                                    <div class="card-img-overlay">
-                                        <h5 class="card-title">
-                                            ...
-                                        </h5>
-                                        <p class="card-text">
-                                            ...
-                                        </p>
+                                                                                                            <div class="card bg-dark text-white">
+                                                                                                                <img src="/img/..." class="card-img" alt="...">
+                                                                                                                <div class="card-img-overlay">
+                                                                                                                    <h5 class="card-title">
+                                                                                                                        ...
+                                                                                                                    </h5>
+                                                                                                                    <p class="card-text">
+                                                                                                                        ...
+                                                                                                                    </p>
 
-                                        <a href="..." class="btn btn-primary">Leer</a>
+                                                                                                                    <a href="..." class="btn btn-primary">Leer</a>
 
-                                    </div>
-                                </div>
+                                                                                                                </div>
+                                                                                                            </div>
 
-                            </div>
+                                                                                                        </div>
 
 
-                        -->
+                                                                                                    -->
+
+            @foreach ($file as $comic)
+                <div class="col">
+
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">{{ $comic->title }}</div>
+                        <div class="card-body">
+
+                            <p class="card-text">{{ $comic->description }}</p>
+                            <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">Leer</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            @endforeach
 
             <a href="{{ route('comics.create') }}" class="btn btn-primary">Sube tu cómic</a>
 

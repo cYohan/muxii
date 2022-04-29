@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\Multimedia;
 use App\Models\Type;
+
+use App\Http\Resources\FileResource;
+
 use Illuminate\Http\Request;
 
 class ComicsController extends Controller
@@ -17,17 +21,28 @@ class ComicsController extends Controller
 
         //return view('sections.book.comics.index', compact('comics'));
 
-        return view('sections.book.comics.index');
+        $file = FileResource::collection(
+            File::where('type_id', 2)->paginate()
+        );
+
+        //return $file;
+
+        return view('sections.book.comics.index', compact('file'));
     }
 
     public function show($id)
     {
-        $files = File::find($id)->multimedias;
-        $comic = File::find($id);
+        $comic = FileResource::collection(
+            File::where('id', $id)->get()
+        );
+        //dd($comic);
+        //return $comic;
 
-        //return $files;
+        $paginas = Multimedia::where('file_id', $id)->get();
 
-        return view('sections.book.comics.show', compact('comic', 'files'));
+        //return $paginas;
+
+        return view('sections.book.comics.show', compact('comic', 'paginas'));
     }
 
     public function create()
@@ -48,24 +63,27 @@ class ComicsController extends Controller
 
         $fileComic->save();
 
-        //return redirect(route('home'));
-    }
+        //dump($request->comic);
 
-    public function storeAsComis(Request $request)
-    {
-        return $request->comic;
         if ($request->hasFile('comic')) {
-            $file = $request->file('comic');
-            $filename = $file->getClientOriginalName(); //Nombre del archivo
-            $extension = $file->getClientOriginalExtension(); //Extensión del archivo
+            $files = $request->file('comic');
+            foreach ($files as $file) {
 
-            $folder = uniqid() . '_' . now()->timestamp; //Nombre del folder donde se va a guardar
+                $filename = $file->getClientOriginalName(); //Nombre del archivo
+                $extension = $file->getClientOriginalExtension(); //Extensión del archivo
 
-            $url = $folder . '/' . $filename;
+                $folder = uniqid() . '_' . now()->timestamp; //Nombre del folder donde se va a guardar
 
-            $file->addMedia(storage_path('app/media/comics/' . $url))->toMediaCollection('media'); //Ruta donde se va a guardar el archivo
+                $url = $folder . '/' . $filename;
+
+                $file->addMedia(storage_path('app/media/comics/' . $url))->toMediaCollection('media'); //Ruta donde se va a guardar el archivo
+
+            }
+
 
             return redirect(route('comics'));
         }
+
+        //return redirect(route('home'));
     }
 }
