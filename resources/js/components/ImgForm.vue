@@ -3,7 +3,7 @@
         <form @submit.prevent="submit" v-if="isAuthenticated">
             <div class="card-body">
 
-                <input type="text" placeholder="Titulo" v-model="formData.title" name="title" class="form-control" id="title">
+                <input type="text" placeholder="Titulo" v-model="formData.title" name="title" required class="form-control" id="title">
                 <div class="card-body">
                     <textarea
                         v-model="formData.body"
@@ -16,6 +16,8 @@
                     </textarea>
                 </div>
                 <file-pond
+                    required
+                    aria-required="true"
                     name="imagenes"
                     ref="pond"
                     label-idle="Arrastra aquí tus archivos aqui ..."
