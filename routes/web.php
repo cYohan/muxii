@@ -55,7 +55,8 @@ Route::get('/book/comics/create', [ComicsController::class, 'create'])->name('co
 Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
 
 Route::post('/book/comics/create', [ComicsController::class, 'store'])->name('comic.store');
-Route::post('/comic/store', [ComicsController::class, 'storeAsComis']);
+
+//Route::post('/comic/store', [ComicsController::class, 'storeAsComics']);
 
 /* Status */
 

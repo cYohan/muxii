@@ -46637,7 +46637,7 @@ var render = function () {
                     "aria-required": "true",
                     name: "imagenes",
                     "label-idle": "Arrastra aquí tus archivos aqui ...",
-                    "max-file": "1",
+                    "max-file": "50",
                     "allow-multiple": "true",
                     "instant-upload": "false",
                   },
