@@ -37,6 +37,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/forms', [HomeController::class, 'forms'])->name('forms');
 
 /* Rutas de navegación principal */
 
@@ -55,6 +56,8 @@ Route::get('/book/comics/create', [ComicsController::class, 'create'])->name('co
 Route::get('/book/comics/{id}', [ComicsController::class, 'show'])->name('comics.show');
 
 Route::post('/book/comics/create', [ComicsController::class, 'store'])->name('comic.store');
+
+Route::get('/book/spin-offs', [SpinOffsController::class, 'index'])->name('spin-offs');
 
 //Route::post('/comic/store', [ComicsController::class, 'storeAsComics']);
 

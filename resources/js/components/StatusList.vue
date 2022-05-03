@@ -2,11 +2,50 @@
 
         <div>
 
+            <div class="card border-success border-4 text-white bg-dark mb-3 break-inside
+      max-w-sm
+      w-full
+      text-left
+      my-2
+      p-1
+      row-span-1
+      cursor-pointer" style="max-width: 18rem;">
+                <div class="card-header" style="font-size: 1.5em;">¡Nuestros cómcis!</div>
+                <div class="card-body">
+
+                    <p class="card-text">¡Conoce acerca de los cómics que hemos creado para ti!</p>
+                    <br />
+                    <a href="/book/comics" class="btn btn-primary">Leer</a>
+
+                </div>
+            </div>
+
+            <div class="card border-success border-4 text-white bg-dark mb-3 break-inside
+      max-w-sm
+      w-full
+      text-left
+      my-2
+      p-1
+      row-span-1
+      cursor-pointer" style="max-width: 18rem;">
+                <div class="card-header" style="font-size: 1.5em;" >Nuevos Spin-offs</div>
+                <div class="card-body">
+
+                    <p class="card-text">Si eres un apacionado por la lectura y quieres saber un poco más
+                        acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs</p>
+                    <br />
+                    <a href="/book/spin-offs" class="btn btn-primary">Leer</a>
+
+                </div>
+            </div>
+
             <StatusListItems
                   v-for="status in statuses"
                   :status="status"
                   :key="status.id"
             ></StatusListItems>
+
+
         </div>
 </template>
 

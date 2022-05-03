@@ -4,11 +4,12 @@
     @section('title', $pages->title)
 
     @section('content')
-        @include('partials.navigation')
+        @include('partials.nav')
 
-        <div class="container">
+        <div class="container mt-5">
 
-            <h1 class="text-center mb-5">{{ $pages->title }}</h1>
+
+            <h1 class="text-center mb-5 text-white" style="font-size: 2em;">{{ $pages->title }}</h1>
 
             <div class="row g-0 d-flex justify-content-center">
 

@@ -32,9 +32,9 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="bg-[#151515]">
 
-    <div id="app" class="">
+    <div id="app" class="bg-[#151515]">
         <!-- <div id="app" class="bg-[#151515]"> -->
         <main class="">
             @yield('content')

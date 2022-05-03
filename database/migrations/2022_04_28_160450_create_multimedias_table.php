@@ -16,9 +16,9 @@ class CreateMultimediasTable extends Migration
         Schema::create('multimedias', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('ruta');
-            $table->string('carpeta');
-            $table->string('text');
+            $table->string('ruta')->nullable();
+            $table->string('carpeta')->nullable();
+            $table->longText('text');
             $table->foreignId('file_id')
                 ->constrained()
                 ->onDelete('cascade');

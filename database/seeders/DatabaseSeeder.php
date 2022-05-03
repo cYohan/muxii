@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SubtypeSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(CoperamaniaSeeder::class);
+        $this->call(SpinOffsSeeder::class);
     }
 }

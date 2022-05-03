@@ -63,7 +63,7 @@ class ComicsController extends Controller
 
         $fileComic->save();
 
-        //dump($request->comic);
+        dump($request['comic']);
 
         if ($request->hasFile('comic')) {
             $files = $request->file('comic');

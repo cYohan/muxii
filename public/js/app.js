@@ -5631,6 +5631,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -47067,16 +47106,96 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.statuses, function (status) {
-      return _c("StatusListItems", {
-        key: status.id,
-        attrs: { status: status },
-      })
-    }),
-    1
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._l(_vm.statuses, function (status) {
+        return _c("StatusListItems", {
+          key: status.id,
+          attrs: { status: status },
+        })
+      }),
+    ],
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "card border-success border-4 text-white bg-dark mb-3 break-inside\nmax-w-sm\nw-full\ntext-left\nmy-2\np-1\nrow-span-1\ncursor-pointer",
+        staticStyle: { "max-width": "18rem" },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "card-header", staticStyle: { "font-size": "1.5em" } },
+          [_vm._v("¡Nuestros cómcis!")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v("¡Conoce acerca de los cómics que hemos creado para ti!"),
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "btn btn-primary", attrs: { href: "/book/comics" } },
+            [_vm._v("Leer")]
+          ),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "card border-success border-4 text-white bg-dark mb-3 break-inside\nmax-w-sm\nw-full\ntext-left\nmy-2\np-1\nrow-span-1\ncursor-pointer",
+        staticStyle: { "max-width": "18rem" },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "card-header", staticStyle: { "font-size": "1.5em" } },
+          [_vm._v("Nuevos Spin-offs")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(
+              "Si eres un apacionado por la lectura y quieres saber un poco más\n                  acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs"
+            ),
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "/book/spin-offs" },
+            },
+            [_vm._v("Leer")]
+          ),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
