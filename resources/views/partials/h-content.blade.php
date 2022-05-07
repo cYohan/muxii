@@ -17,10 +17,11 @@
                     <button type="button"
                         class="py-1 text-xs font-extrabold text-center text-pinky bg-white w-2/4 rounded-full">
                         IT’S TIME TO UPGRADE TO PREMIUM - 20% OFF ONLY THIS WEEKEND!</button>
-                    <button type="button" id="page-clock"
-                        class="px-2 py-1 mx-1 text-xs font-extrabold text-center text-white bg-[#656565] w-28 rounded-full"></button>
-                    <button type="button" id="page-date"
-                        class="px-2 py-1 mx-1 text-xs font-sans font-extrabold text-center text-white bg-[#656565] w-28 rounded-full"></button>
+                    <!-- <div id="page-clock"
+                        class="px-2 py-1 mx-1 text-xs font-extrabold text-center text-white bg-[#656565] w-28 rounded-full"></div> -->
+                        <clock></clock>
+                    <div id="page-date"
+                        class="px-2 py-1 mx-1 text-xs font-sans font-extrabold text-center text-white bg-[#656565] w-28 rounded-full"></div>
                 </div>
 
                 <div id="content" class="max-w-full mx-auto">
@@ -32,3 +33,4 @@
 
             </main>
         </div>
+
