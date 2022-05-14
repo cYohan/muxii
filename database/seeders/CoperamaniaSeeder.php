@@ -19,7 +19,7 @@ class CoperamaniaSeeder extends Seeder
 
         $file1 = new File();
 
-        $file1->title = "COPERAMANIA P1";
+        $file1->title = "COOPERAMANIA P1";
         $file1->description = "Adentrate en el mundo del coperativismo";
         $file1->user_id = 1;
         $file1->type_id = 2;
@@ -28,7 +28,7 @@ class CoperamaniaSeeder extends Seeder
 
         $file2 = new File();
 
-        $file2->title = "COPERAMANIA P2";
+        $file2->title = "COOPERAMANIA P2";
         $file2->description = "Aprendamos sobre coperativismo";
         $file2->user_id = 1;
         $file2->type_id = 2;
@@ -37,7 +37,7 @@ class CoperamaniaSeeder extends Seeder
 
         $file3 = new File();
 
-        $file3->title = "COPERAMANIA P3";
+        $file3->title = "COOPERAMANIA P3";
         $file3->description = "Sigamos aprendiendo sobre coperativismo";
         $file3->user_id = 1;
         $file3->type_id = 2;
@@ -50,7 +50,7 @@ class CoperamaniaSeeder extends Seeder
 
             $hoja->name = "p" . $i . ".png";
             $hoja->ruta = $hoja->name;
-            $hoja->carpeta = "Coperamania Ep0";
+            $hoja->carpeta = "Cooperamania Ep0";
             $hoja->text = "";
             $hoja->file_id = $file1->id;
 
@@ -63,7 +63,7 @@ class CoperamaniaSeeder extends Seeder
 
             $hoja1->name = "p" . $i . ".png";
             $hoja1->ruta = $hoja->name;
-            $hoja1->carpeta = "Coperamania Ep2";
+            $hoja1->carpeta = "Cooperamania Ep2";
             $hoja1->text = "";
             $hoja1->file_id = $file2->id;
 
@@ -76,7 +76,7 @@ class CoperamaniaSeeder extends Seeder
 
             $hoja2->name = "p" . $i . ".png";
             $hoja2->ruta = $hoja->name;
-            $hoja2->carpeta = "Coperamania Ep3";
+            $hoja2->carpeta = "Cooperamania Ep3";
             $hoja2->text = "";
             $hoja2->file_id = $file3->id;
 

@@ -47137,12 +47137,14 @@ var staticRenderFns = [
         _c(
           "div",
           { staticClass: "card-header", staticStyle: { "font-size": "1.5em" } },
-          [_vm._v("¡Nuestros cómcis!")]
+          [_vm._v("¡Nuestros cómics!")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("p", { staticClass: "card-text" }, [
-            _vm._v("¡Conoce acerca de los cómics que hemos creado para ti!"),
+            _vm._v(
+              'En Muxii Studio tenemos un equipo creador de cómics para diferentes propósitos, de entretenimiento o educativos, checa nuestro más reciente lanzamiento: "COOPERAMANÍA"'
+            ),
           ]),
           _vm._v(" "),
           _c("br"),
@@ -47177,7 +47179,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card-body" }, [
           _c("p", { staticClass: "card-text" }, [
             _vm._v(
-              "Si eres un apacionado por la lectura y quieres saber un poco más\n                  acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs"
+              "Si eres un apasionado por la lectura y quieres saber un poco más\n                  acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs"
             ),
           ]),
           _vm._v(" "),

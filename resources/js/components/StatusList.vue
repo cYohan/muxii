@@ -10,10 +10,10 @@
       p-1
       row-span-1
       cursor-pointer" style="max-width: 18rem;">
-                <div class="card-header" style="font-size: 1.5em;">¡Nuestros cómcis!</div>
+                <div class="card-header" style="font-size: 1.5em;">¡Nuestros cómics!</div>
                 <div class="card-body">
 
-                    <p class="card-text">¡Conoce acerca de los cómics que hemos creado para ti!</p>
+                    <p class="card-text">En Muxii Studio tenemos un equipo creador de cómics para diferentes propósitos, de entretenimiento o educativos, checa nuestro más reciente lanzamiento: "COOPERAMANÍA"</p>
                     <br />
                     <a href="/book/comics" class="btn btn-primary">Leer</a>
 
@@ -31,7 +31,7 @@
                 <div class="card-header" style="font-size: 1.5em;" >Nuevos Spin-offs</div>
                 <div class="card-body">
 
-                    <p class="card-text">Si eres un apacionado por la lectura y quieres saber un poco más
+                    <p class="card-text">Si eres un apasionado por la lectura y quieres saber un poco más
                         acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs</p>
                     <br />
                     <a href="/book/spin-offs" class="btn btn-primary">Leer</a>
