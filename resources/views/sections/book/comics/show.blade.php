@@ -3,6 +3,24 @@
 
     @section('title', $pages->title)
 
+    @section('style')
+
+        <style>
+            @media (max-width: 550px) {
+                .col-6 {
+                    width: 100%;
+                }
+
+                .row,
+                .container {
+                    padding: 0;
+                }
+            }
+
+        </style>
+
+    @endsection
+
     @section('content')
         @include('partials.nav')
 

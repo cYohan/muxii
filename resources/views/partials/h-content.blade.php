@@ -1,4 +1,4 @@
-<div id="page-content" class="">
+<div id="page-content" class="p-2">
     <div class="container my-2 mx-auto">
         <img src="/img/banner.jpg" class="mx-auto" alt="">
     </div>

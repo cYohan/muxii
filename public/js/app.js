@@ -47130,17 +47130,20 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "card border-success border-4 text-white bg-dark mb-3 break-inside\nmax-w-sm\nw-full\ntext-left\nmy-2\np-1\nrow-span-1\ncursor-pointer",
+          "card border-success border-4 text-white bg-dark mb-3 break-inside\n        max-w-sm\n        w-full\n        text-left\n        my-2\n        p-1\n        row-span-1\n        cursor-pointer",
         staticStyle: { "max-width": "18rem" },
       },
       [
         _c(
           "div",
-          { staticClass: "card-header", staticStyle: { "font-size": "1.5em" } },
+          {
+            staticClass: "card-header p-1",
+            staticStyle: { "font-size": "1.3em" },
+          },
           [_vm._v("¡Nuestros cómics!")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "card-body p-1" }, [
           _c("p", { staticClass: "card-text" }, [
             _vm._v(
               'En Muxii Studio tenemos un equipo creador de cómics para diferentes propósitos, de entretenimiento o educativos, checa nuestro más reciente lanzamiento: "COOPERAMANÍA"'
@@ -47166,20 +47169,20 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "card border-success border-4 text-white bg-dark mb-3 break-inside\nmax-w-sm\nw-full\ntext-left\nmy-2\np-1\nrow-span-1\ncursor-pointer",
+          "card border-success border-4 text-white bg-dark mb-3 break-inside\n\n        w-full\n        text-left\n        my-2\n        p-1\n        row-span-1\n        cursor-pointer",
         staticStyle: { "max-width": "18rem" },
       },
       [
         _c(
           "div",
-          { staticClass: "card-header", staticStyle: { "font-size": "1.5em" } },
+          { staticClass: "card-header", staticStyle: { "font-size": "1.3em" } },
           [_vm._v("Nuevos Spin-offs")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("p", { staticClass: "card-text" }, [
             _vm._v(
-              "Si eres un apasionado por la lectura y quieres saber un poco más\n                  acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs"
+              "Si eres un apasionado por la lectura y quieres saber un poco más\n                acerca del universo de The Mad Squad, es hora de que leas nuestros nuevos spin-offs"
             ),
           ]),
           _vm._v(" "),

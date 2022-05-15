@@ -30,6 +30,9 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>@yield('title')</title>
+
+    @yield('style')
+
 </head>
 
 <body class="bg-[#151515]">
