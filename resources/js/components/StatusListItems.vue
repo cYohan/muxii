@@ -5,7 +5,7 @@
 
     <!-- Card para texto -->
     <card-txt :status="status"></card-txt>
-    
+
 
     <div
       class="offcanvas offcanvas-end w-50"
@@ -75,7 +75,7 @@ export default {
       type: Object,
       required: true,
     },
-    
+
   },
   data() {
     return {

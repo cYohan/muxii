@@ -9,6 +9,7 @@ class UploadController extends Controller
 {
     public function store(Request $request)
     {
+        //dump($request['avatar']);
         if ($request->hasFile('avatar')) {
 
             $file = $request->file('avatar');

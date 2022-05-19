@@ -36,6 +36,8 @@ class StatusesController extends Controller
 
         /* Guardamos en la base de datos y en el storage de laravel */
 
+        //dd($request->files);
+
         if ($request->has('files')) {
 
             foreach ($request->file('files') as $file) {

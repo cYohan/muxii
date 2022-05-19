@@ -24,7 +24,8 @@ window.EventBus = new Vue({});
 Vue.component("status-form", require("./components/StatusForm.vue").default);
 Vue.component("status-list", require("./components/StatusList.vue").default);
 Vue.component("img-form", require("./components/ImgForm.vue").default);
-
+Vue.component("clock", require("./components/Clock.vue").default);
+import Vue from "vue";
 import auth from "./mixins/auth";
 
 Vue.mixin(auth);
