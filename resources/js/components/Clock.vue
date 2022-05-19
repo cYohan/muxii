@@ -1,4 +1,13 @@
 <template>
+
+<!-- 
+
+    -------------EXPERIMENTAL------------
+
+    Este componente está en fase de desarrollo, no es 100% funcional aún
+
+ -->
+
   <div
     id="page-clock"
     class="

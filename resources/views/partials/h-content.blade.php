@@ -1,3 +1,5 @@
+<!-- Este es el componente para el feed, aquí se muestran las publicaciones, y están los 
+    indicadores -->
 <div id="page-content" class="">
             <div class="container my-2 mx-auto">
                 <img src="/img/banner.jpg" class="mx-auto" alt="">
@@ -25,8 +27,10 @@
                 </div>
 
                 <div id="content" class="max-w-full mx-auto">
-
+                    <!-- Este es el contenedor interno del feed, donde vamos a cargar las publicaciones -->
                     <div id="cards-container" class="md:masonry-2-col lg:masonry-4-col box-border mx-auto before:box-inherit after:box-inherit">
+                        <!-- Estilos personalizados para generar un grid masonry, es responsivo y varía
+                            el tamaño de columnas de acuerdo al tamaño de pantalla -->
                         <status-list></status-list>
                     </div>
                 </div>

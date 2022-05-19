@@ -1,4 +1,8 @@
 <template>
+  <!-- v-if es un condicional donde evaluamos el tipo de publicación, varía la forma en que 
+      se maneja el contenido de acuerdo a su naturaleza -->
+  <!-- break-inside es una clase personalizada de Tailwind, ver resources/css/app.css que se utiliza 
+      para acomodar el contenido en formato masonry -->
   <div
     v-if="status.type == 'img'"
     class="
@@ -31,7 +35,6 @@
       <span v-text="status.title" class="text-white pl-7 text-lg"></span>
     </div>
   </div>
-
 </template>
 
 <script>

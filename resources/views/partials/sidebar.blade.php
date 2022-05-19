@@ -1,11 +1,17 @@
+<!-- 
+    Este es el componente para el menú de navegación lateral.
+ -->
 <aside class="w-24" aria-label="Sidebar">
 
             <div class="overflow-y-auto py-4 px-3 bg-black h-full">
-
+            <!-- El contenedor tiene una propiedad en la que su altura, es proporcional 
+                al tamaño del contenedor donde se cargan las tarjetas, para que no quede cortado a la mitad
+                y se ajuste al contenido.-->
                 <ul class="space-y-4 mx-2">
 
                     <li class="">
-
+                        <!-- 'btn-p' es una clase personalizada de Tailwind,
+                            ver el archivo resources/css/app.css -->
                         <button class="btn-p" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">

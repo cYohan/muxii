@@ -89,6 +89,10 @@
         </div>
     </div>
 </nav> -->
+
+<!-- Componente para la barra de navegación, el nav que está comentado arriba es de pruebas, 
+    el nav que hay a continuación es el del diseño -->
+
 <nav class="flex flex-nowrap justify-between  bg-black h-full">
 
         <div id="logo" class="my-2  mx-auto ">
@@ -101,6 +105,7 @@
         <div id="search-container" class="h-24 w-3/4 flex justify-end pr-3 items-center">
             <form class="w-full max-w-sm md:w-64 sm:w-52">
                 <div class="flex items-center py-2">
+                    <!-- El color que está entre corchetes, es una propiedad arbitraria de Tailwind (Revisar doc oficial) -->
                     <input
                         class="appearance-none bg-[#2D2D2D] rounded-full border-none w-full text-gray-400 mr-2 py-2 px-4 leading-tight focus:outline-none"
                         type="text" placeholder="Search Muxii">
