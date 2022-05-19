@@ -3,31 +3,25 @@
 @section('title', 'Spin-off')
 
 @section('content')
-    @include('partials.navigation')
+    @include('partials.nav')
 
     <div class="container">
         @foreach ($spinOff as $file)
-            @if ($file->subtype_id == 1)
-                <h1 class="text-center mb-5">{{ $file->name }}</h1>
+            <br>
 
-                <div class="row g-0">
-                    <div class="col-md-8">
-                        <div class="card-body">
+            <h1 class="text-center mb-5 text-white" style="font-size: 2em;">{{ $file->name }}</h1>
 
-                            <p class="card-text">{{ $file->body }}</p>
+            <div class="row g-0 d-flex justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-body">
 
-                        </div>
+                        <pre style="font-family: 'Times New Roman', Times, serif; font-size: 1.4em;"
+                            class="card-text text-white">{{ $file->text }}</pre>
+
                     </div>
-            @endif
-            @if ($file->subtype_id == 2)
-                <div class="col-md-4">
-
-                    <img src="/img/{{ $file->rute }}" class="img-fluid rounded-start mt-4" alt="{{ $file->name }}">
-
                 </div>
-    </div>
-    @endif
-    @endforeach
+            </div>
+        @endforeach
 
     </div>
 

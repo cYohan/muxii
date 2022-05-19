@@ -73,9 +73,10 @@ class RegisterController extends Controller
             'first_name' => $data['name'],
             'last_name' => $data['name'],
             'email' => $data['email'],
+            'rol' => $data['rol'],
             'password' => Hash::make($data['password']),
         ]);
-
+        dump($data['avatar']);
         if ($data['avatar']) {
             $temporalyFile = TemporalyFile::where('folder', $data['avatar'])->first();
 

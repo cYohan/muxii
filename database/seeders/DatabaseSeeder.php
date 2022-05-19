@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TypesSeeder::class);
         $this->call(SubtypeSeeder::class);
+        $this->call(UsersSeeder::class);
+        $this->call(CoperamaniaSeeder::class);
+        $this->call(SpinOffsSeeder::class);
     }
 }

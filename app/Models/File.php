@@ -41,14 +41,20 @@ class File extends Model implements HasMedia
     {
         return $this->belongsTo(User::class);
     }
-
-    public function multimedias()
+    /*
+    public function images()
     {
-        return $this->hasMany(Multimedia::class);
+        return $this->getMedia('media');
     }
+    */
 
     public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+
+    public function multimedias()
+    {
+        return $this->hasMany(Multimedia::class);
     }
 }

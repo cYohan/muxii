@@ -11879,6 +11879,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-auto {
   height: auto;
 }
+<<<<<<< HEAD
+=======
+.w-full {
+  width: 100%;
+}
+.w-auto {
+  width: auto;
+}
+>>>>>>> f63153f8294defbf93cdf9a8aed51348ceda8412
 .w-28 {
   width: 7rem;
 }
@@ -11891,9 +11900,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-3\/4 {
   width: 75%;
 }
-.w-full {
-  width: 100%;
-}
 .w-6 {
   width: 1.5rem;
 }
@@ -11903,11 +11909,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-24 {
   width: 6rem;
 }
-.max-w-full {
-  max-width: 100%;
-}
 .max-w-sm {
   max-width: 24rem;
+}
+.max-w-full {
+  max-width: 100%;
 }
 .flex-shrink-0 {
   flex-shrink: 0;
@@ -12017,11 +12023,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-2 {
   padding: 0.5rem;
 }
-.p-0 {
-  padding: 0px;
-}
 .p-1 {
   padding: 0.25rem;
+}
+.p-0 {
+  padding: 0px;
 }
 .p-3 {
   padding: 0.75rem;

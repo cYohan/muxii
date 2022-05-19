@@ -30,11 +30,15 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>@yield('title')</title>
+
+    @yield('style')
+
 </head>
 
-<body>
+<body class="bg-[#151515]">
 
     <div id="app" class="bg-[#151515]">
+        <!-- <div id="app" class="bg-[#151515]"> -->
         <main class="">
             @yield('content')
         </main>

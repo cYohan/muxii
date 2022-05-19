@@ -13,7 +13,7 @@ class SpinOffsController extends Controller
 
     public function index()
     {
-        $spinOffs = Type::where('name', 'Spin-off')->first()->files;
+        $spinOffs = File::where('type_id', 1)->get();
 
         //return $spinOffs;
 
@@ -22,7 +22,7 @@ class SpinOffsController extends Controller
 
     public function show($id)
     {
-        $spinOff = File::find($id)->multimedias;
+        $spinOff = Multimedia::where('file_id', $id)->get();
 
         //return $spinOff;
 

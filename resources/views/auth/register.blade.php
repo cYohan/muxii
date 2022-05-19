@@ -10,6 +10,7 @@
                 <div class="card bg-light px-4 py-2">
                     <form action="{{ route('register') }}" method="POST" class="row g-3">
                         @csrf
+
                         <div class="col-md-12">
                             <label for="inputName4" class="form-label">Nombre de usuario</label>
                             <input type="text" class="form-control" id="inputName4" name="name">
@@ -41,6 +42,8 @@
                                 <input type="file" name="avatar" id="avatar" />
                             </div>
                         </div>
+
+                        <input type="hidden" value="user" id="inputRol" name="rol">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Registrarse</button>
                         </div>
